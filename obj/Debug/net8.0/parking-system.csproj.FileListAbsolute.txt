@@ -1,0 +1,14 @@
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\bin\Debug\net8.0\parking-system.exe
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\bin\Debug\net8.0\parking-system.deps.json
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\bin\Debug\net8.0\parking-system.runtimeconfig.json
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\bin\Debug\net8.0\parking-system.dll
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\bin\Debug\net8.0\parking-system.pdb
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.AssemblyInfo.cs
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.dll
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\refint\parking-system.dll
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.pdb
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.genruntimeconfig.cache
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\ref\parking-system.dll
