@@ -26,7 +26,7 @@ public class ParkingService : IParkingService
         return parkingLot;
     }
 
-    public void ParkVehicle(string policeNumber, VehicleType type, string color)
+    public void ParkVehicle(string policeNumber, string color, VehicleType type)
     {
         if (string.IsNullOrEmpty(policeNumber))
         {
@@ -51,7 +51,7 @@ public class ParkingService : IParkingService
             throw new Exception("<< sorry, parking lot is full >>");
         }
 
-        var vehicle = new Vehicle(policeNumber, type, color);
+        var vehicle = new Vehicle(policeNumber, color, type);
         availableSlot.Status = ParkingSlotStatus.Occupied;
         availableSlot.Vehicle = vehicle;
         _parkingRepository.UpdateParkingSlot(availableSlot);
@@ -83,16 +83,6 @@ public class ParkingService : IParkingService
     public List<ParkingSlot> GetParkingSlots()
     {
         return _parkingRepository.GetAllParkingSlots();
-    }
-
-    public int GetAvailableSlots()
-    {
-        return _parkingRepository.GetAllParkingSlots().Count(x => x.Status == ParkingSlotStatus.Available);
-    }
-
-    public int GetOccupiedSlots()
-    {
-        return _parkingRepository.GetAllParkingSlots().Count(x => x.Status == ParkingSlotStatus.Occupied);
     }
 
     public List<Vehicle> GetVehiclesByOddPoliceNumber(bool isOdd)
@@ -129,14 +119,14 @@ public class ParkingService : IParkingService
         return vehicles!;
     }
 
-    public Dictionary<string, List<int>> GetSlotNumbersForVehiclesByColor()
+    public List<int> GetSlotNumbersForVehiclesByColor(string color)
     {
-        var vehiclesByColor = _parkingRepository.GetAllParkingSlots()
-            .Where(x => x.Vehicle != null)
-            .GroupBy(x => x.Vehicle!.Color)
-            .ToDictionary(group => group.Key, group => group.Select(x => x.Id).ToList());
+        var slotIdByColor = _parkingRepository.GetAllParkingSlots()
+            .Where(x => x.Vehicle != null && x.Vehicle.Color == color)
+            .Select(x => x.Id)
+            .ToList();
 
-        return vehiclesByColor;
+        return slotIdByColor;
     }
 
     public int GetSlotNumberForVehicleByPoliceNumber(string policeNumber)

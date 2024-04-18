@@ -12,3 +12,4 @@ C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8
 C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.pdb
 C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.genruntimeconfig.cache
 C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\ref\parking-system.dll
+C:\Users\user\Desktop\placement-test\ntt-data-test\parking-system\obj\Debug\net8.0\parking-system.sourcelink.json

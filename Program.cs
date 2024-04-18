@@ -28,7 +28,7 @@ public class Program
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error: {e.Message}");
+                Console.WriteLine(e.Message);
             }
 
             if (command.ToLower() == "exit")
@@ -50,8 +50,8 @@ public class Program
                 break;
             case "park":
                 if (parts.Length != 4) throw new ArgumentException("Invalid command format.");
-                ParkingService.ParkVehicle(parts[1], (VehicleType)Enum.Parse(typeof(VehicleType), parts[2], true),
-                    parts[3]);
+                ParkingService.ParkVehicle(parts[1], parts[2],
+                    (VehicleType)Enum.Parse(typeof(VehicleType), parts[3], true));
                 break;
             case "leave":
                 if (parts.Length != 2) throw new ArgumentException("Invalid command format.");
@@ -66,10 +66,31 @@ public class Program
                 int count = ParkingService.GetVehiclesByType(type).Count;
                 Console.WriteLine($"Number of vehicles of type {type}: {count}");
                 break;
-            case "police_numbers_for_vehicles_with_odd_plate":
+            case "registration_numbers_for_vehicles_with_odd_plate":
                 List<Vehicle> oddVehicles = ParkingService.GetVehiclesByOddPoliceNumber(true);
                 string oddPlates = string.Join(", ", oddVehicles.Select(v => v.PoliceNumber));
                 Console.WriteLine($"Registration numbers for vehicles with odd plates: {oddPlates}");
+                break;
+            case "registration_numbers_for_vehicles_with_even_plate":
+                List<Vehicle> evenVehicles = ParkingService.GetVehiclesByOddPoliceNumber(false);
+                string evenPlates = string.Join(", ", evenVehicles.Select(v => v.PoliceNumber));
+                Console.WriteLine($"Registration numbers for vehicles with even plates: {evenPlates}");
+                break;
+            case "registration_numbers_for_vehicles_with_color":
+                List<Vehicle> vehicles = ParkingService.GetVehiclesByColor(parts[1]);
+                string plates = string.Join(", ", vehicles.Select(v => v.PoliceNumber));
+                Console.WriteLine($"Registration numbers for vehicles with color {parts[1]}: {plates}");
+                break;
+            case "slot_numbers_for_vehicles_with_color":
+                List<int> slotIdByColor = ParkingService.GetSlotNumbersForVehiclesByColor(parts[1]);
+                string slotNumbers = string.Join(", ", slotIdByColor);
+                Console.WriteLine($"Slot numbers for vehicles with color {parts[1]}: {slotNumbers}");
+                break;
+            case "slot_number_for_registration_number":
+                int slotNumber = ParkingService.GetSlotNumberForVehicleByPoliceNumber(parts[1]);
+                Console.WriteLine(slotNumber);
+                break;
+            case "exit":
                 break;
             default:
                 Console.WriteLine("Invalid command.");
@@ -87,13 +108,13 @@ public class Program
     private static void PrintParkingStatus()
     {
         var parkingSlots = ParkingService.GetParkingSlots();
-        Console.WriteLine("Slot\t\tNo.\t\t\tType\t\tRegistration No\tColour");
-        Console.WriteLine("-------\t\t----\t\t\t----\t\t\t-----------------\t-------");
+        Console.WriteLine("Slot\t\tNo.\t\tType\t\tColour");
+        Console.WriteLine("-------\t\t----\t\t----\t\t-------");
 
         foreach (var slot in parkingSlots)
         {
             Console.WriteLine(slot.Status == ParkingSlotStatus.Available
-                ? $"{slot.Id}\t\t\t\t\tAvailable"
+                ? $"{slot.Id}\t\t<< Slot Available >>"
                 : $"{slot.Id}\t\t{slot.Vehicle!.PoliceNumber}\t{slot.Vehicle!.Type}\t\t{slot.Vehicle!.Color}");
         }
     }

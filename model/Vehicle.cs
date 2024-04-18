@@ -9,7 +9,7 @@ public class Vehicle
     public string Color { get; set; }
     public DateTime EntryTime { get; set; }
 
-    public Vehicle(string policeNumber, VehicleType type, string color)
+    public Vehicle(string policeNumber, string color, VehicleType type)
     {
         PoliceNumber = policeNumber;
         Type = type;
